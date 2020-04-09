@@ -20,9 +20,9 @@ namespace ovvemarken_backend.Controllers
 
         // GET: api/Patch/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public ActionResult Get(int id)
         {
-            return "value";
+            return Ok(new {id = id});
         }
 
         // POST: api/Patch
