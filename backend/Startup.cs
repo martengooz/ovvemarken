@@ -10,6 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ovvemarken_backend.BL;
+using ovvemarken_backend.Interfaces.DL;
+using ovvemarken_backend.Interfaces.BL;
+using ovvemarken_backend.DL;
 
 namespace ovvemarken_backend
 {
@@ -27,6 +31,12 @@ namespace ovvemarken_backend
         {
             services.AddCors();
             services.AddControllers();
+
+            // BL
+            services.AddScoped<IPatchService, PatchService>();
+
+            // DL
+            services.AddScoped<IPatchDbContext, PatchDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ovvemarken_backend.Interfaces.BL;
 
 namespace ovvemarken_backend.Controllers
 {
@@ -11,6 +12,13 @@ namespace ovvemarken_backend.Controllers
     [ApiController]
     public class PatchController : ControllerBase
     {
+        private readonly IPatchService _patchService;
+
+        public PatchController(IPatchService patchService)
+        {
+            _patchService = patchService;
+        }
+
         // GET: api/Patch
         [HttpGet]
         public IEnumerable<string> Get()
@@ -22,7 +30,12 @@ namespace ovvemarken_backend.Controllers
         [HttpGet("{id}", Name = "Get")]
         public ActionResult Get(int id)
         {
-            return Ok(new {id = id});
+            var patch = _patchService.GetPatchInfo(id);
+            if (patch != null)
+            {
+                return Ok(patch);
+            }
+            return NotFound();
         }
 
         // POST: api/Patch
