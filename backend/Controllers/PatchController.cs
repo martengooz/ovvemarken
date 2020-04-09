@@ -18,7 +18,7 @@ namespace ovvemarken_backend.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET: api/Patch/5
+        // GET: api/Patch/{id}
         [HttpGet("{id}", Name = "Get")]
         public ActionResult Get(int id)
         {
@@ -31,13 +31,13 @@ namespace ovvemarken_backend.Controllers
         {
         }
 
-        // PUT: api/Patch/5
+        // PUT: api/Patch/{id}
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE: api/ApiWithActions/5
+        // DELETE: api/ApiWithActions/{id}
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
