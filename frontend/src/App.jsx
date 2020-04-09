@@ -1,28 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import axios from 'axios';
 
-function getPatch(id) {
-  axios.get('https://localhost:5001/api/patch/' + id)
-  .then(function (response) {
-    console.log(response.data)
-    return(response.data);
-  })
-  .catch(function (error) {
-    console.log(error);
-  })
-}
+export default function App() {
 
-function App() {  
-  let data = getPatch(1);
-  console.log(data)
+  const [data, setData] = useState({});
+
+  function getPatch(id) {
+    fetch(`https://localhost:44394/api/patch/${id}`)
+    .then(response => response.json())
+    .then(data => {
+      setData(data);
+    })
+    .catch(function (error) {
+      console.log("Error: " + error);
+    })
+  }
+
+  useEffect(() => {
+    getPatch(1);
+  }, []);
+  
+  
   return (
     <div className="App">
-      <p>Patch: { data }</p>
+      <p>Patch: { data.id }</p>
     </div>
   );
 }
-
-export default App;
-ReactDOM.render(<App />, document.getElementById('root'));
