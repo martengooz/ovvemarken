@@ -8,18 +8,40 @@ using System.Threading.Tasks;
 
 namespace ovvemarken_backend.BL
 {
+    /// <summary>
+    /// Service for handling patches
+    /// </summary>
     public class PatchService : IPatchService
     {
-        private IPatchDbContext _patchDbContext;
+        private readonly IPatchRepository _patchRepository;
 
-        public PatchService(IPatchDbContext patchDbContext)
+        /// <summary>
+        /// Contructor of patch service
+        /// </summary>
+        /// <param name="patchRepository">Repository for patch info</param>
+        /// <exception cref="ArgumentNullException">Thrown for null argument</exception>
+        public PatchService(IPatchRepository patchRepository)
         {
-            _patchDbContext = patchDbContext ?? throw new ArgumentNullException();
+            _patchRepository = patchRepository ?? throw new ArgumentNullException();
         }
 
+        /// <summary>
+        /// Gets the info of a patch
+        /// </summary>
+        /// <param name="id">ID of the patch</param>
+        /// <returns>The info of the patch with given id</returns>
         public PatchModel GetPatchInfo(int id)
         {
-            return _patchDbContext.GetPatchInfo(id);
+            return _patchRepository.GetPatchInfo(id);
+        }
+
+        /// <summary>
+        /// Updates patch info
+        /// </summary>
+        /// <param name="patch">The patch to update</param>
+        public void UpdatePatchInfo(PatchModel patch)
+        {
+            _patchRepository.UpdatePatchInfo(patch);
         }
     }
 }

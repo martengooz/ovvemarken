@@ -4,22 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ovvemarken_backend.Interfaces.BL
+namespace ovvemarken_backend.Interfaces.DL
 {
     /// <summary>
-    /// Service interface for patches
+    /// Repository interface for patches
     /// </summary>
-    public interface IPatchService
+    public interface IPatchRepository
     {
         /// <summary>
-        /// Gets the info of a patch
+        /// Gets patch info from the database
         /// </summary>
         /// <param name="id">ID of the patch</param>
-        /// <returns>The info of the patch with given id</returns>
+        /// <returns>The patch for the given id. Null if it doesn't exist.</returns>
         public PatchModel GetPatchInfo(int id);
 
         /// <summary>
-        /// Updates patch info
+        /// Updates patch in the database
         /// </summary>
         /// <param name="patch">The patch to update</param>
         public void UpdatePatchInfo(PatchModel patch);

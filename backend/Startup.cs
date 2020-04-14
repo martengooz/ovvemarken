@@ -19,6 +19,9 @@ namespace ovvemarken_backend
 {
     public class Startup
     {
+        readonly string DevelopmentOrigins = "_devOrigins";
+        readonly string ProductionOrigins = "_prodOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,14 +32,24 @@ namespace ovvemarken_backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: DevelopmentOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("http://localhost:3000")
+                                      .AllowAnyHeader()
+                                      .AllowAnyMethod();
+                                  });
+            });
+
             services.AddControllers();
 
             // BL
             services.AddScoped<IPatchService, PatchService>();
 
             // DL
-            services.AddScoped<IPatchDbContext, PatchDbContext>();
+            services.AddScoped<IPatchRepository, PatchRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,11 +58,14 @@ namespace ovvemarken_backend
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseCors(DevelopmentOrigins);
+            } 
+            else
+            {
+                app.UseCors(ProductionOrigins);
             }
 
-            app.UseCors(
-                options => options.WithOrigins("http://localhost:3000").AllowAnyMethod()
-            );
+            
 
             app.UseHttpsRedirection();
 
