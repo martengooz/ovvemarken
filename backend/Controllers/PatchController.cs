@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ovvemarken_backend.Interfaces.BL;
+using ovvemarken_backend.Models;
 
 namespace ovvemarken_backend.Controllers
 {
@@ -44,10 +45,25 @@ namespace ovvemarken_backend.Controllers
         {
         }
 
-        // PUT: api/Patch/{id}
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        /// <summary>
+        /// Updates patch info of an existing patch
+        /// PUT: api/Patch
+        /// </summary>
+        /// <param name="patch">Patch to update</param>
+        /// <returns>Ok if patch got updated</returns>
+        /// <returns>Not found if the patch doesn't exist</returns>
+        [HttpPut]
+        public ActionResult Put([FromBody] PatchModel patch)
         {
+            try
+            {
+                _patchService.UpdatePatchInfo(patch);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            return Ok();
         }
 
         // DELETE: api/ApiWithActions/{id}

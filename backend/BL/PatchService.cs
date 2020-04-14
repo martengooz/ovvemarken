@@ -21,5 +21,14 @@ namespace ovvemarken_backend.BL
         {
             return _patchDbContext.GetPatchInfo(id);
         }
+
+        /// <summary>
+        /// Updates patch info
+        /// </summary>
+        /// <param name="patch">The patch to update</param>
+        public void UpdatePatchInfo(PatchModel patch)
+        {
+            _patchDbContext.UpdatePatchInfo(patch);
+        }
     }
 }
