@@ -26,6 +26,26 @@ namespace ovvemarken_backend.BL
         }
 
         /// <summary>
+        /// Creates a new patch
+        /// </summary>
+        /// <param name="patch">Patch to create</param>
+        /// <returns>The id of the created patch</returns>
+        /// <exception cref="ArgumentNullException">Thrown if patch is null</exception>
+        /// <exception cref="ArgumentException">Thrown if id isn't 0</exception>
+        public int CreatePatchInfo(PatchModel patch)
+        {
+            if (patch == null)
+            {
+                throw new ArgumentNullException("Patch is null");
+            }
+            if (patch.ID != 0)
+            {
+                throw new ArgumentException("ID of new patch must be 0");
+            }
+            return _patchRepository.CreatePatchInfo(patch);
+        }
+
+        /// <summary>
         /// Gets the info of a patch
         /// </summary>
         /// <param name="id">ID of the patch</param>

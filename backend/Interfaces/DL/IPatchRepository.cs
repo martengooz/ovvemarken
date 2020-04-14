@@ -12,6 +12,13 @@ namespace ovvemarken_backend.Interfaces.DL
     public interface IPatchRepository
     {
         /// <summary>
+        /// Creates a patch entry in the database
+        /// </summary>
+        /// <param name="patch">Patch to create</param>
+        /// <returns>ID of the created patch</returns>
+        public int CreatePatchInfo(PatchModel patch);
+
+        /// <summary>
         /// Gets patch info from the database
         /// </summary>
         /// <param name="id">ID of the patch</param>
