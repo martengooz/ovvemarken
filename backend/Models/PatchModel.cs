@@ -15,10 +15,10 @@ namespace ovvemarken_backend.Models
 
         public string Creator { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
 
-        public int Width { get; set; }
+        public int? Width { get; set; }
 
-        public int Height { get; set; }
+        public int? Height { get; set; }
     }
 }
