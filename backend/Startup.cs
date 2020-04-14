@@ -49,7 +49,7 @@ namespace ovvemarken_backend
             services.AddScoped<IPatchService, PatchService>();
 
             // DL
-            services.AddScoped<IPatchDbContext, PatchDbContext>();
+            services.AddScoped<IPatchRepository, PatchRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

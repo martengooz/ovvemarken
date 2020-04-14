@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ovvemarken_backend.Interfaces.DL
 {
-    public interface IPatchDbContext
+    public interface IPatchRepository
     {
         public PatchModel GetPatchInfo(int id);
 

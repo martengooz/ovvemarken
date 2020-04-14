@@ -10,16 +10,16 @@ namespace ovvemarken_backend.BL
 {
     public class PatchService : IPatchService
     {
-        private IPatchDbContext _patchDbContext;
+        private IPatchRepository _patchRepository;
 
-        public PatchService(IPatchDbContext patchDbContext)
+        public PatchService(IPatchRepository patchRepository)
         {
-            _patchDbContext = patchDbContext ?? throw new ArgumentNullException();
+            _patchRepository = patchRepository ?? throw new ArgumentNullException();
         }
 
         public PatchModel GetPatchInfo(int id)
         {
-            return _patchDbContext.GetPatchInfo(id);
+            return _patchRepository.GetPatchInfo(id);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace ovvemarken_backend.BL
         /// <param name="patch">The patch to update</param>
         public void UpdatePatchInfo(PatchModel patch)
         {
-            _patchDbContext.UpdatePatchInfo(patch);
+            _patchRepository.UpdatePatchInfo(patch);
         }
     }
 }

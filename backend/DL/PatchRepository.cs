@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ovvemarken_backend.DL
 {
-    public class PatchDbContext : IPatchDbContext
+    public class PatchRepository : IPatchRepository
     {
         public PatchModel GetPatchInfo(int id)
         {
