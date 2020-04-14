@@ -1,4 +1,4 @@
-﻿using ovvemarken_backend.Interfaces.DL;
+using ovvemarken_backend.Interfaces.DL;
 using ovvemarken_backend.Models;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,11 @@ namespace ovvemarken_backend.DL
     {
         public PatchModel GetPatchInfo(int id)
         {
-            using (var db = new SQLiteDBContext())
+            using var db = new SQLiteDBContext();
+            var patch = db.Patches.FirstOrDefault(p => p.ID == id);
+            return patch;
+        }
+
             {
                 var patch = db.Patches
                     .Where(p => p.ID == id)
