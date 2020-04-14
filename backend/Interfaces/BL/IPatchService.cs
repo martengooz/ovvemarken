@@ -12,6 +12,13 @@ namespace ovvemarken_backend.Interfaces.BL
     public interface IPatchService
     {
         /// <summary>
+        /// Creates a new patch
+        /// </summary>
+        /// <param name="patch">Patch to create</param>
+        /// <returns>The id of the created patch</returns>
+        public int CreatePatchInfo(PatchModel patch);
+
+        /// <summary>
         /// Gets the info of a patch
         /// </summary>
         /// <param name="id">ID of the patch</param>
