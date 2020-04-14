@@ -1,0 +1,27 @@
+﻿using ovvemarken_backend.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace ovvemarken_backend.Interfaces.DL
+{
+    /// <summary>
+    /// Repository interface for patches
+    /// </summary>
+    public interface IPatchRepository
+    {
+        /// <summary>
+        /// Gets patch info from the database
+        /// </summary>
+        /// <param name="id">ID of the patch</param>
+        /// <returns>The patch for the given id. Null if it doesn't exist.</returns>
+        public PatchModel GetPatchInfo(int id);
+
+        /// <summary>
+        /// Updates patch in the database
+        /// </summary>
+        /// <param name="patch">The patch to update</param>
+        public void UpdatePatchInfo(PatchModel patch);
+    }
+}
