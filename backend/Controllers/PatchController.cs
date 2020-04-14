@@ -9,25 +9,33 @@ using ovvemarken_backend.Models;
 
 namespace ovvemarken_backend.Controllers
 {
+    /// <summary>
+    /// Patch controller
+    /// Handles all api calls for a patch
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class PatchController : ControllerBase
     {
         private readonly IPatchService _patchService;
 
+        /// <summary>
+        /// Constructor for the patch controller
+        /// </summary>
+        /// <param name="patchService">Service for handling patches</param>
+        /// <exception cref="ArgumentNullException">Thrown for null argument</exception>
         public PatchController(IPatchService patchService)
         {
-            _patchService = patchService;
+            _patchService = patchService ?? throw new ArgumentNullException();
         }
 
-        // GET: api/Patch
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/Patch/{id}
+        /// <summary>
+        /// Gets a patch
+        /// GET: api/Patch/{id}
+        /// </summary>
+        /// <param name="id">ID of the patch</param>
+        /// <returns>The patch with the ID</returns>
+        /// <returns>Not found if the patch doesn't exist</returns>
         [HttpGet("{id}", Name = "Get")]
         public ActionResult Get(int id)
         {

@@ -7,8 +7,16 @@ using System.Threading.Tasks;
 
 namespace ovvemarken_backend.DL
 {
+    /// <summary>
+    /// Repoitory for handling patches in the database
+    /// </summary>
     public class PatchRepository : IPatchRepository
     {
+        /// <summary>
+        /// Gets patch info from the database
+        /// </summary>
+        /// <param name="id">ID of the patch</param>
+        /// <returns>The patch for the given id. Null if it doesn't exist.</returns>
         public PatchModel GetPatchInfo(int id)
         {
             using var db = new SQLiteDBContext();

@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace ovvemarken_backend.Interfaces.DL
 {
+    /// <summary>
+    /// Repository interface for patches
+    /// </summary>
     public interface IPatchRepository
     {
+        /// <summary>
+        /// Gets patch info from the database
+        /// </summary>
+        /// <param name="id">ID of the patch</param>
+        /// <returns>The patch for the given id. Null if it doesn't exist.</returns>
         public PatchModel GetPatchInfo(int id);
 
         /// <summary>
