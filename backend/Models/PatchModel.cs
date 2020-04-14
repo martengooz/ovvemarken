@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,6 +19,7 @@ namespace ovvemarken_backend.Models
         /// <summary>
         /// Name of the patch
         /// </summary>
+        [Required]
         public string Name { get; set; }
 
         /// <summary>
@@ -38,11 +40,13 @@ namespace ovvemarken_backend.Models
         /// <summary>
         /// Width of the patch
         /// </summary>
+        [Range(0, 10000)] // 10 meter
         public int? Width { get; set; }
 
         /// <summary>
         /// Height of the patch
         /// </summary>
+        [Range(0, 10000)] // 10 meter
         public int? Height { get; set; }
     }
 }
