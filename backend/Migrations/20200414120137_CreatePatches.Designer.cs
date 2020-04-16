@@ -9,7 +9,7 @@ using ovvemarken_backend;
 namespace ovvemarken_backend.Migrations
 {
     [DbContext(typeof(SQLiteDBContext))]
-    [Migration("20200409075943_CreatePatches")]
+    [Migration("20200414120137_CreatePatches")]
     partial class CreatePatches
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,10 +27,10 @@ namespace ovvemarken_backend.Migrations
                     b.Property<string>("Creator")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Date")
+                    b.Property<DateTime?>("Date")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Height")
+                    b.Property<int?>("Height")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("ImageLink")
@@ -39,7 +39,7 @@ namespace ovvemarken_backend.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Width")
+                    b.Property<int?>("Width")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ID");

@@ -47,10 +47,30 @@ namespace ovvemarken_backend.Controllers
             return NotFound();
         }
 
-        // POST: api/Patch
+        /// <summary>
+        /// Creates a new patch
+        /// POST: api/Patch
+        /// </summary>
+        /// <param name="patch">Patch to create</param>
+        /// <returns>ID of the created patch</returns>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult Post([FromBody] PatchModel patch)
         {
+            try
+            {
+                var id = _patchService.CreatePatchInfo(patch);
+                if (id != 0)
+                {
+                    return Ok(id);
+                }
+            } 
+            catch (Exception ex) when (
+                ex is ArgumentNullException
+                || ex is ArgumentException
+            ) {
+                return BadRequest(ex.Message);
+            }
+            return StatusCode(500);
         }
 
         /// <summary>

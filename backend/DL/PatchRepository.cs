@@ -13,6 +13,23 @@ namespace ovvemarken_backend.DL
     public class PatchRepository : IPatchRepository
     {
         /// <summary>
+        /// Creates a patch entry in the database
+        /// </summary>
+        /// <param name="patch">Patch to create</param>
+        /// <returns>ID of the created patch</returns>
+        public int CreatePatchInfo(PatchModel patch)
+        {
+            if (patch != null && patch.ID == 0 && !String.IsNullOrWhiteSpace(patch.Name))
+            {
+                using var db = new SQLiteDBContext();
+                var entry = db.Add(patch);
+                db.SaveChanges();
+                return entry.Entity.ID;
+            }
+            return 0;
+        }
+
+        /// <summary>
         /// Gets patch info from the database
         /// </summary>
         /// <param name="id">ID of the patch</param>

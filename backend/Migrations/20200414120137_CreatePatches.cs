@@ -16,9 +16,9 @@ namespace ovvemarken_backend.Migrations
                     Name = table.Column<string>(nullable: true),
                     ImageLink = table.Column<string>(nullable: true),
                     Creator = table.Column<string>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: false),
-                    Width = table.Column<int>(nullable: false),
-                    Height = table.Column<int>(nullable: false)
+                    Date = table.Column<DateTime>(nullable: true),
+                    Width = table.Column<int>(nullable: true),
+                    Height = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
