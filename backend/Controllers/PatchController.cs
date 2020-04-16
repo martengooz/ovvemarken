@@ -37,7 +37,7 @@ namespace ovvemarken_backend.Controllers
         /// <returns>The patch with the ID</returns>
         /// <returns>Not found if the patch doesn't exist</returns>
         [HttpGet("{id}", Name = "Get")]
-        public ActionResult Get(int id)
+        public ActionResult GetPatch(int id)
         {
             var patch = _patchService.GetPatchInfo(id);
             if (patch != null)
@@ -54,7 +54,7 @@ namespace ovvemarken_backend.Controllers
         /// <param name="patch">Patch to create</param>
         /// <returns>ID of the created patch</returns>
         [HttpPost]
-        public ActionResult Post([FromBody] PatchModel patch)
+        public ActionResult CreatePatch([FromBody] PatchModel patch)
         {
             try
             {
@@ -81,7 +81,7 @@ namespace ovvemarken_backend.Controllers
         /// <returns>Ok if patch got updated</returns>
         /// <returns>Not found if the patch doesn't exist</returns>
         [HttpPut]
-        public ActionResult Put([FromBody] PatchModel patch)
+        public ActionResult UpdatePatch([FromBody] PatchModel patch)
         {
             try
             {
