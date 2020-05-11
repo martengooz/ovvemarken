@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import "./App.css";
 import PatchPage from "./PatchPage/PatchPage.jsx";
+import StartPage from "./StartPage/StartPage.jsx";
 
 export default function App() {
   return (
@@ -12,7 +13,7 @@ export default function App() {
         </Grid>
       </Grid>
       <Grid item xs={12} md={12}>
-        <PatchPage id={1} />
+        <StartPage />
       </Grid>
     </Grid>
   );
