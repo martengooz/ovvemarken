@@ -26,6 +26,13 @@ namespace ovvemarken_backend.Interfaces.DL
         public PatchModel GetPatchInfo(int id);
 
         /// <summary>
+        /// Searches for patches
+        /// </summary>
+        /// <param name="searchQuery">Query to search by</param>
+        /// <returns>Found patches</returns>
+        public ICollection<PatchModel> SearchPatches(SearchModel searchQuery);
+
+        /// <summary>
         /// Updates patch in the database
         /// </summary>
         /// <param name="patch">The patch to update</param>

@@ -47,6 +47,7 @@ namespace ovvemarken_backend
 
             // BL
             services.AddScoped<IPatchService, PatchService>();
+            services.AddScoped<ISearchService, SearchService>();
 
             // DL
             services.AddScoped<IPatchRepository, PatchRepository>();

@@ -42,6 +42,23 @@ namespace ovvemarken_backend.DL
         }
 
         /// <summary>
+        /// Searches for patches
+        /// </summary>
+        /// <param name="searchQuery">Query to search by</param>
+        /// <returns>Found patches</returns>
+        public ICollection<PatchModel> SearchPatches(SearchModel searchQuery)
+        {
+            using var db = new SQLiteDBContext();
+            var start = searchQuery.MaxPatches * (searchQuery.Page - 1);
+            var patches = db.Patches
+                .OrderBy(p => p.Name)
+                .Skip(start)
+                .Take(searchQuery.MaxPatches)
+                .ToList();
+            return patches;
+        }
+
+        /// <summary>
         /// Updates patch info in the database
         /// </summary>
         /// <param name="patch">The patch to update</param>
