@@ -1,6 +1,10 @@
 body {
-  background-color: lightblue;
+  background-color: #F7F6F7;
   color: #24283d;
+  margin: 0px !important;
+  font-family: 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 }
 
 .root {
